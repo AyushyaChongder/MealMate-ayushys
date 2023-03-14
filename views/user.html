@@ -119,51 +119,52 @@
               Sign Up
               <span class="underline"></span>
             </button>
-            <form class="form user-signup">
+            <form class="form user-signup" action="/usersignup">
               <fieldset>
                 <!-- <legend>Please, enter your email and password for login.</legend> -->
 				<div class="column">
 					<div class="input-block">
-						<label for="user-fname">First name</label>
-						<input id="user-fname" name="user-fname" type="text" required>
+						<label for="user-name">Name</label>
+						<input id="user-name" name="name" type="text" required>
 					  </div>
 					  <div class="input-block">
 						<label for="user-street">Street name</label>
-						<input id="user-street" name="user-street" type="text" required>
+						<input id="user-street" name="street" type="text" required>
 					  </div>
 					  <div class="input-block">
 						<label for="user-pincode">Pincode</label>
-						<input id="user-pincode" name="user-pincode" type="text" required>
+						<input id="user-pincode" name="pincode" type="text" required>
 					  </div>
 					  <div class="input-block">
 						<label for="user-email">E-mail</label>
-						  <input id="user-email" name="user-email" type="email" required>
+						  <input id="user-email" name="email" type="email" required>
 					  </div>
 					 
 						
 				</div>
                 <div class="column">
-					<div class="input-block">
+					<!-- <div class="input-block">
 						<label for="user-lname">Last name</label>
-						<input id="user-lname" name="user-lname" type="text" required>
-					  </div>
+						<input id="user-lname" name="lname" type="text" required>
+					  </div> -->
 					  <div class="input-block">
 						<label for="user-house">House no</label>
-						<input id="user-house" name="user-house" type="text" required>
+						<input id="user-house" name="house" type="text" required>
 					  </div>
 					  <div class="input-block">
 						<label for="user-phone">Phone Number</label>
-						<input id="user-phone" name="user-phone" type="phone" required>
+						<input id="user-phone" name="phone" type="phone" required>
 					  </div>
 					  
 						<div class="input-block">
 							<label for="user-password">Password</label>
-						<input id="user-password" name="user-password" type="password" required>
+						<input id="user-password" name="password" type="password" required>
 						  </div>
 				</div>
 
               </fieldset>
               <button type="submit" class="btn-signup">Sign Up</button>
+			 
             </form>
 		</div>
 	</section>
@@ -189,6 +190,7 @@
 	<!-- main js -->
 	<script src="/js/main.js"></script>
 	<script src="/js/index.js"></script>
+	
     <!-- <script src="assets/js/login.js"></script> -->
 </body>
 </html>
