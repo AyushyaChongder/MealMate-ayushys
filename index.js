@@ -29,6 +29,10 @@ app.get("/contact", function(req,res){
     res.sendFile(path.join(__dirname + "/views/contact.html"))
 });
 
+app.get("/orders", function(req,res){
+    res.sendFile(path.join(__dirname + "/views/checkout.html"))
+});
+
 app.get("/explore", function(req,res){
     res.sendFile(path.join(__dirname + "/views/shop.html"))
 });
@@ -74,25 +78,6 @@ app.get("/usersignup", (req, res) => {
         }
     })
 });
-
-// app.get('/loginperson', function(req, res) {
-//     const email = req.body.email;
-//     const password = req.body.password;
-    
-//     // Check if user exists in the database
-//     connection.query('SELECT * FROM master WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
-//       if (error) {
-//         throw error;
-//       }
-//       if (results.length > 0) {
-//         // User authenticated, redirect to the dashboard
-//         res.redirect('/success');
-//       } else {
-//         // Invalid credentials, show error message
-//         res.send('Invalid emailid or password');
-//       }
-//     });
-//   });
 
 app.get("/loginperson", (req, res) => {
     // fetch data from the form

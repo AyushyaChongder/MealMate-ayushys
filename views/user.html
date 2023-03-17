@@ -36,6 +36,88 @@
 	
 
 </head>
+<script >
+    function ValidateForm() {
+      var regName = /^[a-zA-Z]+ [a-zA-Z]+$/;
+        var name = document.getElementById('name').value;
+        if(!regName.test(name)){
+            alert('Please enter a valid full name (first & last name).');
+            document.getElementById('name').focus();
+            return false;
+        }
+	  
+	   var regnum = /^[0-9]+$/;
+	   var house = document.getElementById('house').value;
+	   
+   	   if (!regnum.test(house)) {
+		alert('Please enter a valid house number.');
+            document.getElementById('house').focus();
+            return false;
+        }
+
+		var regpin = /^[0-9]{6}$/;
+	    var pincode = document.getElementById('pincode').value;
+	   
+   	   if (!regpin.test(pincode)) {
+		alert('Please enter a valid pincode of 6 digits only.');
+            document.getElementById('pincode').focus();
+            return false;
+        }
+  
+       
+        var phoneno = /^\d{10}$/;
+        var phone = document.getElementById('phone').value;
+        if (!phoneno.test(phone)) {
+        alert('Please provide a valid phone number');
+        phone.focus;
+        return false;
+     }
+    
+        var email = document.getElementById('email');
+        var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    
+        if (!filter.test(email.value)) {
+        alert('Please provide a valid email address');
+        email.focus;
+        return false;
+     }
+     	var newPassword = document.getElementById('password');
+        var minNumberofChars = 8;
+        var maxNumberofChars = 16;
+        var isNonWhiteSpace = /^\S*$/;
+        var isContainsUppercase = /^(?=.*[A-Z]).*$/;
+        var isContainsLowercase = /^(?=.*[a-z]).*$/;
+        var isContainsNumber = /^(?=.*[0-9]).*$/;
+        var isContainsSymbol = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
+        var isValidLength = /^.{8,16}$/;
+        
+        if (!isNonWhiteSpace.test(newPassword.value)) {
+        alert("Password must not contain Whitespaces.");
+        newPassword.focus;
+      }
+      if (!isContainsUppercase.test(newPassword.value)) {
+        alert("Password must have at least one Uppercase Character.");
+        newPassword.focus;
+      }
+      if (!isContainsLowercase.test(newPassword.value)) {
+        alert("Password must have at least one Lowercase Character.");
+        newPassword.focus;
+      }
+      if (!isContainsNumber.test(newPassword.value)) {
+        alert("Password must contain at least one Digit.");
+        newPassword.focus;
+      }
+      if (!isContainsSymbol.test(newPassword.value)) {
+        alert("Password must contain at least one Special Symbol.");
+        newPassword.focus;
+      }
+      if (!isValidLength.test(newPassword.value)) {
+        alert("Password must be 8-16 Characters Long.");
+        newPassword.focus;
+        return false;
+      }
+    }
+    </script>
 <body>
     <!--PreLoader-->
     <div class="loader">
@@ -113,31 +195,31 @@
 	<!-- end header -->
     <section class="forms-section">
         
-        <div class="forms">
-          <div class="form-wrapper is-active">
+        <div class="forms" >
+          <div class="form-wrapper is-active" >
             <button type="button" class="switcher">
               Sign Up
               <span class="underline"></span>
             </button>
-            <form class="form user-signup" action="/usersignup">
+            <form class="form user-signup" action="/usersignup" onsubmit="return ValidateForm()" >
               <fieldset>
                 <!-- <legend>Please, enter your email and password for login.</legend> -->
 				<div class="column">
 					<div class="input-block">
 						<label for="user-name">Name</label>
-						<input id="user-name" name="name" type="text" required>
+						<input id="name" name="name" type="text" >
 					  </div>
 					  <div class="input-block">
 						<label for="user-street">Street name</label>
-						<input id="user-street" name="street" type="text" required>
+						<input id="street" name="street" type="text" >
 					  </div>
 					  <div class="input-block">
 						<label for="user-pincode">Pincode</label>
-						<input id="user-pincode" name="pincode" type="text" required>
+						<input id="pincode" name="pincode" type="text" >
 					  </div>
 					  <div class="input-block">
 						<label for="user-email">E-mail</label>
-						  <input id="user-email" name="email" type="email" required>
+						  <input id="email" name="email" type="email" >
 					  </div>
 					 
 						
@@ -145,25 +227,25 @@
                 <div class="column">
 					<!-- <div class="input-block">
 						<label for="user-lname">Last name</label>
-						<input id="user-lname" name="lname" type="text" required>
+						<input id="user-lname" name="lname" type="text" >
 					  </div> -->
 					  <div class="input-block">
 						<label for="user-house">House no</label>
-						<input id="user-house" name="house" type="text" required>
+						<input id="house" name="house" type="text" >
 					  </div>
 					  <div class="input-block">
 						<label for="user-phone">Phone Number</label>
-						<input id="user-phone" name="phone" type="phone" required>
+						<input id="phone" name="phone" type="phone" >
 					  </div>
 					  
 						<div class="input-block">
 							<label for="user-password">Password</label>
-						<input id="user-password" name="password" type="password" required>
+						<input id="password" name="password" type="password" >
 						  </div>
 				</div>
 
               </fieldset>
-              <button type="submit" class="btn-signup">Sign Up</button>
+              <button type="submit" class="btn-signup" >Sign Up</button>
 			 
             </form>
 		</div>
