@@ -32,9 +32,233 @@
         <!--counter-->
         <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
         <link rel="stylesheet" href="/css/userprofile.css">
-    
+         
     </head>
 <body>
-    
+    <!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+	
+	<!-- header -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="index.html">
+								<img src="/img/Meal__2_-removebg-preview.png" alt="" width="70px">
+							</a>
+						</div>
+						<!-- logo -->
+
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+								<li ><a href="/">Home</a></li>
+								<li><a href="/about">About</a></li>
+								<li><a href="/explore">Explore</a>
+									<!-- <ul class="sub-menu">
+										<li><a href="404.html">PGs nearby</a></li>
+										<li><a href="about.html">Meals</a></li> -->
+										<!-- <li><a href="cart.html">Y</a></li>
+										<li><a href="checkout.html">Check Out</a></li>
+										<li><a href="contact.html">Contact</a></li>
+										<li><a href="news.html">News</a></li>
+										<li><a href="shop.html">Shop</a></li> -->
+									<!-- </ul> -->
+								</li>
+								<li><a href="/orders">Orders</a>
+									<ul class="sub-menu">
+										<li><a href="/history">Order History</a></li>
+										<!-- <li><a href="single-news.html">Single News</a></li> -->
+									</ul>
+								</li>
+								<li><a href="/contact">Contact</a></li>
+								<!-- <li><a href="shop.html">Shop</a>
+									<ul class="sub-menu">
+										<li><a href="shop.html">Shop</a></li>
+										<li><a href="checkout.html">Check Out</a></li>
+										<li><a href="single-product.html">Single Product</a></li>
+										<li><a href="cart.html">Cart</a></li>
+									</ul>
+								</li> -->
+								<li>
+									<div class="header-icons">
+										<div class="hero-btns">
+											<a href="/login" class="boxed-btn">Log in</a>
+											<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+										</div>
+										<!-- <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a> -->
+										
+									</div>
+								</li>
+							</ul>
+						</nav>
+						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+	
+	<!-- search area -->
+	<div class="search-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<h3>Search For:</h3>
+							<input type="text" placeholder="Keywords">
+							<button type="submit">Search <i class="fas fa-search"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end search area -->
+
+	
+    <div class="container mb-4 main-container">
+        <div class="row">
+            <div class="col-lg-4 pb-5">
+                <!-- Account Sidebar-->
+                <div class="author-card pb-3">
+                    <div class="author-card-cover"><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-heart text-md"></i>&nbsp;290</a></div>
+                    <div class="author-card-profile">
+                        <div class="author-card-avatar"><img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="Daniel Adams">
+                        </div>
+                        <div class="author-card-details">
+                            <h5 class="author-card-name text-lg"><%=data %></h5>
+                            <p><%= data %></p>
+                    </div>
+                </div>
+                <div class="wizard">
+                    <nav class="list-group list-group-flush">
+                        <a class="list-group-item active" href="#">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><i class="fa fa-smile-o mr-1 text-muted"></i>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">Orders List</div>
+                                </div><span class="badge badge-secondary">6</span>
+                            </div>
+                        </a>
+                        <a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-profile-settings-page" target="__blank"><i class="fa fa-user text-muted"></i>Profile Settings</a><a class="list-group-item" href="#"><i class="fa fa-map-marker text-muted"></i>Addresses</a>
+                        <a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" target="__blank">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><i class="fa fa-heart mr-1 text-muted"></i>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
+                                </div><span class="badge badge-secondary">3</span>
+                            </div>
+                        </a>
+                        <!-- <a class="list-group-item" href="#">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div><i class="fa fa-tag mr-1 text-muted"></i>
+                                    <div class="d-inline-block font-weight-medium text-uppercase">My Tickets</div>
+                                </div><span class="badge badge-secondary">4</span>
+                            </div>
+                        </a> -->
+                    </nav>
+                </div>
+            </div>
+            <!-- Orders Table-->
+            <div class="col-lg-8 pb-5">
+                <div class="d-flex justify-content-end pb-3">
+                    <div class="form-inline">
+                        <label class="text-muted mr-3" for="order-sort">Sort Orders</label>
+                        <select class="form-control" id="order-sort">
+                            <option>All</option>
+                            <option>Delivered</option>
+                            <option>In Progress</option>
+                            <option>Delayed</option>
+                            <option>Canceled</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover mb-0">
+                        <thead>
+                            <tr>
+                                <th>Order #</th>
+                                <th>Date Purchased</th>
+                                <th>Status</th>
+                                <th>Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><a class="navi-link" href="#order-details" data-toggle="modal"><%= id %></a></td>
+                                <td><%= date %></td>
+                                <td><span class="badge badge-danger m-0">Canceled</span></td>
+                                <td><span><%= amount %></span></td>
+                            </tr>
+                            <tr>
+                                <td><a class="navi-link" href="#order-details" data-toggle="modal"></a></td>
+                                <td><%= date %></td>
+                                <td><span class="badge badge-info m-0"><%= status %></span></td>
+                                <td><%= amount %></td>
+                            </tr>
+                            <tr>
+                                <td><a class="navi-link" href="#order-details" data-toggle="modal"><%= id %></a></td>
+                                <td><%= date %></td>
+                                <td><span class="badge badge-warning m-0"><%= status %></span></td>
+                                <td><%= amount %></td>
+                            </tr>
+                            <tr>
+                                <td><a class="navi-link" href="#order-details" data-toggle="modal"><%= id %></a></td>
+                                <td><%= date %></td>
+                                <td><span class="badge badge-success m-0"><%= status %></span></td>
+                                <td><%= amount %></td>
+                            </tr>
+                            <tr>
+                                <td><a class="navi-link" href="#order-details" data-toggle="modal"><%= id %></a></td>
+                                <td><%= date %></td>
+                                <td><span class="badge badge-success m-0"></span></td>
+                                <td><%= amount %></td>
+                            </tr>
+                            <tr>
+                                <td><a class="navi-link" href="#order-details" data-toggle="modal"><%= id %></a></td>
+                                <td><%= date %></td>
+                                <td><span class="badge badge-success m-0"><%= status %></span></td>
+                                <td><%= amount %></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- jquery -->
+	<script src="/js/jquery-1.11.3.min.js"></script>
+	<!-- bootstrap -->
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<!-- count down -->
+	<script src="/js/jquery.countdown.js"></script>
+	<!-- isotope -->
+	<script src="/js/jquery.isotope-3.0.6.min.js"></script>
+	<!-- waypoints -->
+	<script src="/js/waypoints.js"></script>
+	<!-- owl carousel -->
+	<script src="/js/owl.carousel.min.js"></script>
+	<!-- magnific popup -->
+	<script src="/js/jquery.magnific-popup.min.js"></script>
+	<!-- mean menu -->
+	<script src="/js/jquery.meanmenu.min.js"></script>
+	<!-- sticker js -->
+	<script src="/js/sticker.js"></script>
+	<!-- main js -->
+	<script src="/js/main.js"></script>
+	<script src="/js/index.js"></script>
+
 </body>
 </html>

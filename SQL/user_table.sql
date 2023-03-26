@@ -14,7 +14,7 @@ password varchar(20));
 
 ALTER TABLE user AUTO_INCREMENT=1000001;
 
-select * from user;
+	select * from user;
 
 drop trigger afins;
 drop trigger af_ins;
