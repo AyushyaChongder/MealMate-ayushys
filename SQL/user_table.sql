@@ -14,11 +14,7 @@ password varchar(20));
 
 ALTER TABLE user AUTO_INCREMENT=1000001;
 
-	select * from user;
-
-drop trigger afins;
-drop trigger af_ins;
-drop trigger insert_trigger;
+select * from user;
  truncate table user;
 
 create table master(
@@ -38,7 +34,12 @@ FOR EACH ROW
 INSERT INTO master (id, name, email, password, user_type)
 VALUES (NEW.id, NEW.name, NEW.email, NEW.password, 'User');
 END //
-
+create table master1(
+id int,
+name varchar(50),
+email varchar(50) primary key,
+password varchar(20),
+user_type varchar(10));
 
 
 

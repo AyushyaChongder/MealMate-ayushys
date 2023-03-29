@@ -4,6 +4,8 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const port=4500;
 const mysql=require("./connection").con
+app.set("view engine","hbs");
+app.set("views", "./views");
 
 
 app.use(express.static('assets'));
@@ -81,26 +83,61 @@ app.get("/usersignup", (req, res) => {
 
 app.get("/loginperson", (req, res) => {
     // fetch data from the form
+        //console.log(req.query)
+        const email=req.query.email;
+        const password=req.query.password;
+        // console.log(email,password);
 
-
-    const { email, password } = req.query;
-
-    let qry = "select * from master where email=? and password=?";
+    let qry = "SELECT * FROM master WHERE email=? and password=?";
     mysql.query(qry, [email,password], (err, results) => {
         if (err) throw err
         else {
-            if (results.length > 0) {
-                // User authenticated, redirect to the dashboard
-                res.redirect('/loginsuccess');
-              } else {
-                // Invalid credentials, show error message
-                res.send('Invalid emailid or password');
-              }
+            // console.log(results)
+            if(results.length>0){
 
-        }
-        console.log(results)
-    });
+                // res.send("<h1>USer found</h1>")
+                // console.log(results)
+                //console.log(results[0].email)
+
+                res.redirect(`/userprofile/${results[0].email}`);
+            }
+            else
+            {
+                res.send("<h1>USer not found</h1>")
+            }
+
+        }});
+   
 })
+
+app.get('/userprofile/:email', (req, res) => {
+
+        const email = req.params.email;
+        console.log(email)
+        mysql.query('SELECT * FROM user WHERE email = ?', [email], (error, results) => {
+            if (error) throw error;
+            else{
+                console.log(results)
+                res.render("userprofile", { data: results });
+            }
+       
+            // res.sendFile(path.join(__dirname + "/views/userprofile.html"))
+        });
+        
+    // }
+});
+
+app.get("/view", (req, res) => {
+    let qry = "select * from user ";
+    mysql.query(qry, (err, results) => {
+        if (err) throw err
+        else {
+            res.render("view", { data: results });
+        }
+
+    });
+
+});
 
 app.listen(port,(err)=>{
     if(err)
