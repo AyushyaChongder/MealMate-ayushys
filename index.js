@@ -2,14 +2,21 @@ const express = require("express")//import express module
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
-const port=4500;
-const mysql=require("./connection").con
+// const session = require('express-session');
 app.set("view engine","hbs");
 app.set("views", "./views");
 
 
+
+const port=4500;
+const mysql=require("./connection").con
+app.use(bodyParser.urlencoded({ extended: true }))
+
+// parse application/json
+app.use(bodyParser.json({ type: 'application/*+json' }));
+
 app.use(express.static('assets'));
-app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.get("/", function(req,res){
     res.sendFile(path.join(__dirname + "/views/index.html"))
@@ -51,6 +58,11 @@ app.get("/singlepg", function(req,res){
     res.sendFile(path.join(__dirname + "/views/single-product.html"))
 });
 
+// app.get("/userprofile", function(req,res){
+//     res.render("/views/userprofile.ejs")
+// });
+
+
 app.get("/usersignup", (req, res) => {
     // fetching data from form
     const { name, street, house, pincode, email, phone, password } = req.query
@@ -80,7 +92,8 @@ app.get("/usersignup", (req, res) => {
         }
     })
 });
-
+var id;
+// var email,password;
 app.get("/loginperson", (req, res) => {
     // fetch data from the form
         //console.log(req.query)
@@ -94,12 +107,13 @@ app.get("/loginperson", (req, res) => {
         else {
             // console.log(results)
             if(results.length>0){
-
+                id=results[0].id;
+                console.log(id)
                 // res.send("<h1>USer found</h1>")
                 // console.log(results)
                 //console.log(results[0].email)
 
-                res.redirect(`/userprofile/${results[0].email}`);
+                res.redirect(`/userprofile/${id}`);
             }
             else
             {
@@ -110,15 +124,42 @@ app.get("/loginperson", (req, res) => {
    
 })
 
-app.get('/userprofile/:email', (req, res) => {
+// app.get("/orderlist", (req, res) => {
+//     const email=req.query.email;
+//     let qry = "(select order_id,date_purchased,order_status,cost from order where user_id  (SELECT id from user where email =?))";
+//     mysql.query(qry, [email], (err, results) => {
+//         if (err) throw err
+//         else {
+//             // console.log(results)
+//             if(results.length>0){
 
-        const email = req.params.email;
-        console.log(email)
-        mysql.query('SELECT * FROM user WHERE email = ?', [email], (error, results) => {
+//                 // res.send("<h1>USer found</h1>")
+//                 // console.log(results)
+//                 //console.log(results[0].email)
+
+//                 res.redirect(`/userprofile/orderlist/${results[0].email}`);
+//             }
+//             else
+//             {
+//                 res.send("<h1>USer not found</h1>")
+//             }
+
+//         }});
+
+
+
+
+// })
+app.get('/userprofile/:id', (req, res) => {
+
+        const id = req.params.id;
+        const qry1 = 'SELECT * FROM user JOIN orders ON orders.user_id = user.id WHERE user.id =?';
+        // console.log(id);
+        mysql.query(qry1, [id], (error, results) => {
             if (error) throw error;
             else{
-                console.log(results)
-                res.render("userprofile", { data: results });
+                 console.log(results);
+                res.render("userprofile", { data: results,name:results[0].name,email:results[0].email});
             }
        
             // res.sendFile(path.join(__dirname + "/views/userprofile.html"))
@@ -127,7 +168,9 @@ app.get('/userprofile/:email', (req, res) => {
     // }
 });
 
-app.get("/view", (req, res) => {
+
+
+app.get("/views", (req, res) => {
     let qry = "select * from user ";
     mysql.query(qry, (err, results) => {
         if (err) throw err
@@ -138,7 +181,6 @@ app.get("/view", (req, res) => {
     });
 
 });
-
 app.listen(port,(err)=>{
     if(err)
     throw err

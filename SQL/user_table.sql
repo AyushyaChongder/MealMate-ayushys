@@ -34,14 +34,22 @@ FOR EACH ROW
 INSERT INTO master (id, name, email, password, user_type)
 VALUES (NEW.id, NEW.name, NEW.email, NEW.password, 'User');
 END //
-create table master1(
-id int,
-name varchar(50),
-email varchar(50) primary key,
-password varchar(20),
-user_type varchar(10));
 
-
-
+create table orders(
+order_id int primary key,
+user_id int,
+order_item varchar(50),
+order_quantity int,
+order_status varchar(50),
+order_cost float,
+ FOREIGN KEY(user_id) REFERENCES user(id));
+ 
+insert into orders values(210000057,1000001,'non-veg meal',1,'In Progress',90,'2023/03/22');
+insert into orders values(210000050,1000002,'veg meal',2,'Delivered',150,'2023/01/22');
+insert into orders values(210000052,1000001,'veg meal',1,'Delivered',75,'2023/01/15');
+truncate table orders;
+select * from orders;
+ALTER TABLE orders
+ADD order_date date;
 
 
