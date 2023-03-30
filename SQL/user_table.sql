@@ -52,4 +52,36 @@ select * from orders;
 ALTER TABLE orders
 ADD order_date date;
 
+create table items(
+item_id int auto_increment primary key, 
+item_description varchar(255),
+item_category varchar(50),
+pg_id int,
+quantity_available int,
+FOREIGN KEY(pg_id) REFERENCES pg(pg_id));
 
+
+create table pg(
+pg_id int auto_increment primary key,
+pg_name varchar(255),
+pg_address varchar(255),
+pg_phone bigint,
+pg_email varchar(255),
+pg_password varchar(50));
+ 
+
+create table orders1(
+order_id int primary key,
+user_id int,
+pg_id int,
+order_item varchar(50),
+order_quantity int,
+order_status varchar(50),
+order_cost float,
+item_id int,
+ FOREIGN KEY(user_id) REFERENCES user(id),
+ FOREIGN KEY(pg_id) REFERENCES pg(pg_id),
+ FOREIGN KEY(item_id) REFERENCES items(item_id));
+ 
+ show tables;
+ 
