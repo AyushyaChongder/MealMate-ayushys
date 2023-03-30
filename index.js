@@ -58,6 +58,11 @@ app.get("/singlepg", function(req,res){
     res.sendFile(path.join(__dirname + "/views/single-product.html"))
 });
 
+// app.get("/update", function(req,res){
+//     res.sendFile(path.join(__dirname + "/views/updateprofile.html"))
+// });
+
+
 // app.get("/userprofile", function(req,res){
 //     res.render("/views/userprofile.ejs")
 // });
@@ -108,12 +113,13 @@ app.get("/loginperson", (req, res) => {
             // console.log(results)
             if(results.length>0){
                 id=results[0].id;
-                console.log(id)
+                // console.log(id)
                 // res.send("<h1>USer found</h1>")
                 // console.log(results)
                 //console.log(results[0].email)
 
                 res.redirect(`/userprofile/${id}`);
+
             }
             else
             {
@@ -124,41 +130,15 @@ app.get("/loginperson", (req, res) => {
    
 })
 
-// app.get("/orderlist", (req, res) => {
-//     const email=req.query.email;
-//     let qry = "(select order_id,date_purchased,order_status,cost from order where user_id  (SELECT id from user where email =?))";
-//     mysql.query(qry, [email], (err, results) => {
-//         if (err) throw err
-//         else {
-//             // console.log(results)
-//             if(results.length>0){
-
-//                 // res.send("<h1>USer found</h1>")
-//                 // console.log(results)
-//                 //console.log(results[0].email)
-
-//                 res.redirect(`/userprofile/orderlist/${results[0].email}`);
-//             }
-//             else
-//             {
-//                 res.send("<h1>USer not found</h1>")
-//             }
-
-//         }});
-
-
-
-
-// })
 app.get('/userprofile/:id', (req, res) => {
 
-        const id = req.params.id;
+         id = req.params.id;
         const qry1 = 'SELECT * FROM user JOIN orders ON orders.user_id = user.id WHERE user.id =?';
         // console.log(id);
         mysql.query(qry1, [id], (error, results) => {
             if (error) throw error;
             else{
-                 console.log(results);
+                //  console.log(results);
                 res.render("userprofile", { data: results,name:results[0].name,email:results[0].email});
             }
        
@@ -168,6 +148,15 @@ app.get('/userprofile/:id', (req, res) => {
     // }
 });
 
+app.get("/update", (req, res) => {
+    const email = req.query.email;
+    // console.log(email);
+    const qry3="Select * from user where email=?";
+    mysql.query(qry3,[email],(error, results) => {
+    console.log(results);
+     res.render("updateprofile",{name:results[0].name,street:results[0].street,pincode:results[0].pincode,email:results[0].email,phone:results[0].phone,house:results[0].house,password:results[0].password})
+    })
+});
 
 
 app.get("/views", (req, res) => {
@@ -181,6 +170,12 @@ app.get("/views", (req, res) => {
     });
 
 });
+
+app.get("/updateinfo",(req,res)=> {
+    const email = req.query.email;
+    
+});
+
 app.listen(port,(err)=>{
     if(err)
     throw err

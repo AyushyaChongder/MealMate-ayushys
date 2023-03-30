@@ -90,10 +90,10 @@
 								</li> -->
 								<li>
 									<div class="header-icons">
-										{{!-- <div class="hero-btns">
+										 <!-- <div class="hero-btns">
 											<a href="/login" class="boxed-btn">Log in</a>
 											<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-										</div> --}}
+										</div> -->
 										<!-- <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a> -->
 										
 									</div>
@@ -128,99 +128,71 @@
 		</div>
 	</div>
 	<!-- end search area -->
-
-	{{!-- {{#if data.length}} --}}
-    <div class="container mb-4 main-container">
-        <div class="row">
-            <div class="col-lg-4 pb-5">
-                <!-- Account Sidebar-->
-                <div class="author-card pb-3">
-                    <div class="author-card-cover"><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;290 points</a></div>
-                    <div class="author-card-profile">
-                        <div class="author-card-avatar"><img src="https://bootdey.com/img/Content/avatar/avatar1.png">
-                        </div>
-                        <div class="author-card-details">
-                            <h5 class="author-card-name text-lg">{{name}}</h5><span class="author-card-position">{{email}}</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="wizard">
-                    <nav class="list-group list-group-flush">
-                        <a class="list-group-item active" href="#orderlist">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div><i class="fa fa-heart mr-1 text-muted"></i>
-                                    <div class="d-inline-block font-weight-medium text-uppercase">Orders List</div>
-                                </div>
-                            </div>
-                        </a><a class="list-group-item" href="/update?email={{email}}"><i class="fa fa-user text-muted"></i>Profile Settings</a><a class="list-group-item" href="#"><i class="fa fa-map-marker text-muted"></i>Addresses</a>
-                        {{!-- <a class="list-group-item" href="https://www.bootdey.com/snippets/view/bs4-wishlist-profile-page" tagert="__blank">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div><i class="fa fa-heart mr-1 text-muted"></i>
-                                    <div class="d-inline-block font-weight-medium text-uppercase">My Wishlist</div>
-                                </div><span class="badge badge-secondary">3</span>
-                            </div>
-                        </a> --}}
-                        {{!-- <a class="list-group-item" href="#">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div><i class="fa fa-tag mr-1 text-muted"></i>
-                                    <div class="d-inline-block font-weight-medium text-uppercase">My Tickets</div>
-                                </div><span class="badge badge-secondary">4</span>
-                            </div>
-                        </a> --}}
-                    </nav>
-                </div>
-            </div>
-            <!-- Orders Table-->
-            <div class="col-lg-8 pb-5">
-                <div class="d-flex justify-content-end pb-3">
-                    <div class="form-inline">
-                        <label class="text-muted mr-3" for="order-sort">Sort Orders</label>
-                        <select class="form-control" id="order-sort">
-                            <option>All</option>
-                            <option>Delivered</option>
-                            <option>In Progress</option>
-                            <option>Delayed</option>
-                            <option>Canceled</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover mb-0">
-                        <thead>
-                            <tr>
-                                <th>Order #</th>
-                                <th>Item</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody>
- 
-                        {{#each data}}
-                        <tr>
-                            {{!-- <th scope="row">{{@index}}</th> --}}
-                            <td>{{this.order_id}}</td>
-                            <td>{{this.order_item}}</td>
-                            <td>{{this.order_date}}</td>
-                            <td>{{this.order_status}}</td>
-                            <td>Rs {{this.order_cost}}</td>
-                        </tr>
-                        {{/each}}
-                    
-                        </tbody>
-                    </table>
-                        {{!-- {{else}}
-                        <tr>
-                        <td>No data ever existed.</td>
-                        </tr>
-                        --}}
-                </div>
-            </div>
-        </div>
-    </div>
-     {{!-- {{/if}} --}}
+    <!-- <div class="container mb-4 main-container"> -->
+		{{!-- {{#data}} --}}
+        <section class="forms-section">
+        
+			<div class="forms" >
+			  <div class="form-wrapper is-active" >
+				<button type="button" class="switcher">
+				  Update Information
+				  <span class="underline"></span>
+				</button>
+				<form class="form user-signup" action="/updateinfo" onsubmit="return ValidateForm()" >
+				  <fieldset>
+					<!-- <legend>Please, enter your email and password for login.</legend> -->
+					<div class="column">
+						<div class="input-block">
+							<label for="user-name">Name</label>
+							<input id="name" name="name" type="text" value={{name}} readonly >
+						  </div>
+						  <div class="input-block">
+							<label for="user-street">Street name</label>
+							<input id="street" name="street" type="text" value={{street}}>
+						  </div>
+						  <div class="input-block">
+							<label for="user-pincode">Pincode</label>
+							<input id="pincode" name="pincode" type="text" value={{pincode}} >
+						  </div>
+						  <div class="input-block">
+							<label for="user-email">E-mail</label>
+							  <input id="email" name="email" type="email" value={{email}} readonly>
+						  </div>
+						 
+							
+					</div>
+					<div class="column">
+						<!-- <div class="input-block">
+							<label for="user-lname">Last name</label>
+							<input id="user-lname" name="lname" type="text" >
+						  </div> -->
+						  <div class="input-block">
+							<label for="user-house">House no</label>
+							<input id="house" name="house" type="text" value="{{house}}">
+						  </div>
+						  <div class="input-block">
+							<label for="user-phone">Phone Number</label>
+							<input id="phone" name="phone" type="phone" value="{{phone}}">
+						  </div>
+						  
+							<div class="input-block">
+								<label for="user-password">Password</label>
+							<input id="password" name="password" type="text" value="{{password}}" readonly>
+							  </div>
+							  <div class="input-block">
+								<label for="user-password">New Password</label>
+							<input id="password1" name="password1" type="password" >
+							  </div>
+					</div>
+	
+				  </fieldset>
+				  <button type="submit" class="btn-signup" >Update</button>
+				 
+				</form>
+			</div>
+		</section>
     {{!-- {{/data}} --}}
+  
     <!-- jquery -->
 	<script src="/js/jquery-1.11.3.min.js"></script>
 	<!-- bootstrap -->
