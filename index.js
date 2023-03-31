@@ -30,6 +30,11 @@ app.get("/user", function(req,res){
     res.sendFile(path.join(__dirname + "/views/user.html"))
 });
 
+app.get("/pg", function(req,res){
+    res.sendFile(path.join(__dirname + "/views/pg_signup.html"))
+});
+
+
 app.get("/about", function(req,res){
     res.sendFile(path.join(__dirname + "/views/about.html"))
 });
@@ -42,9 +47,9 @@ app.get("/orders", function(req,res){
     res.sendFile(path.join(__dirname + "/views/checkout.html"))
 });
 
-app.get("/explore", function(req,res){
-    res.sendFile(path.join(__dirname + "/views/shop.html"))
-});
+// app.get("/explore", function(req,res){
+//     res.sendFile(path.join(__dirname + "/views/explore.html"))
+// });
 
 app.get("/success", function(req,res){
     res.sendFile(path.join(__dirname + "/views/success.html"))
@@ -54,13 +59,19 @@ app.get("/loginsuccess", function(req,res){
     res.sendFile(path.join(__dirname + "/views/loginsuccess.html"))
 });
 
-app.get("/singlepg", function(req,res){
-    res.sendFile(path.join(__dirname + "/views/single-product.html"))
+app.get("/checkout", function(req,res){
+    res.sendFile(path.join(__dirname + "/views/checkout.html"))
 });
+
+// app.get("/singlepg", function(req,res){
+//     res.sendFile(path.join(__dirname + "/views/single-product.html"))
+// });
 
 // app.get("/update", function(req,res){
 //     res.sendFile(path.join(__dirname + "/views/updateprofile.html"))
 // });
+
+
 
 
 
@@ -94,6 +105,57 @@ app.get("/usersignup", (req, res) => {
         }
     })
 });
+
+app.get("/pgsignup", (req, res) => {
+    // fetching data from form
+    const { pg_name, pg_address, pg_phone, pg_email, pg_password } = req.query
+
+    // Sanitization XSS...
+    let qry = "select * from pg where pg_email=?";
+    mysql.query(qry, [pg_email], (err, results) => {
+        if (err)
+            throw err
+        else {
+
+            if (results.length > 0) {
+                res.render("pg", { checkmesg: true })
+            } else {
+
+
+                // insert query
+                let qry2 = "insert into pg (pg_name, pg_address, pg_email, pg_phone, pg_password) values (?,?,?,?,?)";
+                mysql.query(qry2, [pg_name, pg_address, pg_email, pg_phone, pg_password], (err, results) => {
+                    console.log(results);
+                    if (err) throw err;
+                    // if (results.affectedRows > 0) {
+                    //     res.render("user", { mesg: true })
+                    // }
+                    //  res.sendFile(path.join(__dirname + "/views/success.html"))
+                     res.redirect('/explore');
+                })
+            }
+        }
+    })
+});
+
+app.get('/explore', (req, res) => {
+    let qry1="SELECT * from pg";
+    mysql.query(qry1, (err, results) => {
+        if (err) throw err;
+    res.render('explore', { data: results })
+})
+});
+
+app.get('/singlepg',(req, res) => {
+    const pg_name = req.query.pg_name;
+    // console.log(pg_name);
+    const qry3="Select * from pg where pg_name=?";
+    mysql.query(qry3,[pg_name], (err, results) => {
+        if (err) throw err;
+        res.render('singlepg', { pg_name: results[0].pg_name}) 
+    })
+ });
+
 var id;
 // var email,password;
 app.get("/loginperson", (req, res) => {
@@ -137,7 +199,12 @@ app.get('/userprofile/:id', (req, res) => {
         mysql.query(qry1, [id], (error, results) => {
             if (error) throw error;
             else{
-                //  console.log(results);
+                if(results.length==0)
+                {
+                    
+                    res.render("userprofile", { data: results,name:results[0].name,email:results[0].email});
+                }
+                console.log(results);
                 res.render("userprofile", { data: results,name:results[0].name,email:results[0].email});
             }
        

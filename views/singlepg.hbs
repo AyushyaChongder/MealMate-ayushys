@@ -154,17 +154,18 @@
 				</div>
 				<div class="col-md-7">
 					<div class="single-product-content">
-						<h3>Pelagia PG for Boys</h3>
-						<p class="single-product-pricing"><span>Veg Meal</span> </p>
-						<ul>
+						<h3>{{pg_name}}</h3>
+						<p class="single-product-pricing"><span>{{item_category}}</span> </p>
+						{{!-- <ul>
 							<li><p>Jeera Rice</p></li>
 							<li><p>Sambhar Daal</p></li>
 							<li><p>Matar Paneer</p></li>
 							<li><p>Chapati</p></li>
-						</ul>
+						</ul> --}}
+						<p>{{item_description}}</p>
 						<div class="single-product-form">
-							<form action="/checkout">
-								<input type="number" name="order_quantity" placeholder="0">
+							<form action="index.html">
+								<input type="number" placeholder="0" min="0">
 							</form>
 							<a href="/checkout" class="cart-btn"><i class="fas fa-shopping-cart"></i> Book a Meal</a>
 							<p><strong>Categories: </strong>Veg meal</p>
@@ -184,7 +185,7 @@
 	<!-- end single product -->
 
 	<!-- more products -->
-	<div class="more-products mb-150">
+	{{!-- <div class="more-products mb-150">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-8 offset-lg-2 text-center">
@@ -227,11 +228,11 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	<!-- end more products -->
 
 	<!-- logo carousel -->
-	<div class="logo-carousel-section">
+	{{!-- <div class="logo-carousel-section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
@@ -255,7 +256,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	<!-- end logo carousel -->
 
 	<!-- footer -->

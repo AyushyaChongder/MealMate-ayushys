@@ -35,6 +35,11 @@ INSERT INTO master (id, name, email, password, user_type)
 VALUES (NEW.id, NEW.name, NEW.email, NEW.password, 'User');
 END //
 
+CREATE TRIGGER afupdt AFTER UPDATE ON user
+FOR EACH ROW
+UPDATE master SET id=NEW.id, name=NEW.name, email=NEW.email, password=NEW.password;
+END //
+
 create table orders(
 order_id int primary key,
 user_id int,
@@ -59,6 +64,7 @@ item_category varchar(50),
 pg_id int,
 quantity_available int,
 FOREIGN KEY(pg_id) REFERENCES pg(pg_id));
+drop table items;
 
 
 create table pg(
@@ -68,7 +74,16 @@ pg_address varchar(255),
 pg_phone bigint,
 pg_email varchar(255),
 pg_password varchar(50));
- 
+ALTER TABLE pg AUTO_INCREMENT=7000001;
+truncate table pg;
+drop table pg;
+select * from pg;
+delimiter //
+CREATE TRIGGER afinspg AFTER INSERT ON pg
+FOR EACH ROW
+INSERT INTO master (id, name, email, password, user_type)
+VALUES (NEW.pg_id, NEW.pg_name, NEW.pg_email, NEW.pg_password, 'PG');
+END //
 
 create table orders1(
 order_id int primary key,
@@ -82,6 +97,8 @@ item_id int,
  FOREIGN KEY(user_id) REFERENCES user(id),
  FOREIGN KEY(pg_id) REFERENCES pg(pg_id),
  FOREIGN KEY(item_id) REFERENCES items(item_id));
+ 
+ drop table orders1;
  
  show tables;
  
