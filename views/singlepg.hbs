@@ -155,7 +155,7 @@
 				<div class="col-md-7">
 					<div class="single-product-content">
 						<h3>{{pg_name}}</h3>
-						<p class="single-product-pricing"><span>{{item_category}}</span> </p>
+						{{!-- <p class="single-product-pricing">{{item_category}}</p> --}}
 						{{!-- <ul>
 							<li><p>Jeera Rice</p></li>
 							<li><p>Sambhar Daal</p></li>
@@ -167,10 +167,11 @@
 						<br>
 						<h6>Meal Quantity</h6>
 						<div class="single-product-form">
-							<form action="/checkout">
-								<input type="number" placeholder="0" min="0">
+							<form action="/checkout" method="post">
+								<input type="number" placeholder="0" min="0" name="order_quantity">
+								<br><br><a href="/checkout?pg_name={{pg_name}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Book a Meal</a>
 							</form>
-							<a href="/checkout?pg_name={{pg_name}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Book a Meal</a>
+<br>
 							<p><strong>Category: </strong>{{item_category}}</p>
 						</div>
 						<h4>Share:</h4>
@@ -269,16 +270,19 @@
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box about-widget">
 						<h2 class="widget-title">About us</h2>
-						<p>Ut enim ad minim veniam perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae.</p>
+						<p>MealMate will allow food donors(PGs) to schedule pick-up times
+							and share food menu details to individuals for them to place
+							orders. If the food is not used within the given time, a direct
+							connection will be established with nearby charities and nonprofits.</p>
 					</div>
 				</div>
 				<div class="col-lg-3 col-md-6">
 					<div class="footer-box get-in-touch">
 						<h2 class="widget-title">Get in Touch</h2>
 						<ul>
-							<li>34/8, East Hukupara, Gifirtok, Sadan.</li>
-							<li>support@fruitkha.com</li>
-							<li>+00 111 222 3333</li>
+							<li>Christ University, Bangalore, Karnataka.</li>
+							<li>support@mealmate.com</li>
+							<li>8902385820</li>
 						</ul>
 					</div>
 				</div>
@@ -286,11 +290,11 @@
 					<div class="footer-box pages">
 						<h2 class="widget-title">Pages</h2>
 						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="about.html">About</a></li>
-							<li><a href="services.html">Shop</a></li>
-							<li><a href="news.html">News</a></li>
-							<li><a href="contact.html">Contact</a></li>
+							<li><a href="/">Home</a></li>
+							<li><a href="/about">About</a></li>
+							<li><a href="/explore">Explore</a></li>
+							
+							<li><a href="/contact">Contact</a></li>
 						</ul>
 					</div>
 				</div>
@@ -298,7 +302,7 @@
 					<div class="footer-box subscribe">
 						<h2 class="widget-title">Subscribe</h2>
 						<p>Subscribe to our mailing list to get the latest updates.</p>
-						<form action="index.html">
+						<form action="/">
 							<input type="email" placeholder="Email">
 							<button type="submit"><i class="fas fa-paper-plane"></i></button>
 						</form>
@@ -314,7 +318,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6 col-md-12">
-					<p>Copyrights &copy; 2019 - <a href="https://imransdesign.com/">Imran Hossain</a>,  All Rights Reserved.</p>
+					<p>Copyrights &copy; 2023 - <a href="/">MealMate</a>,  All Rights Reserved.</p>
 				</div>
 				<div class="col-lg-6 text-right col-md-12">
 					<div class="social-icons">

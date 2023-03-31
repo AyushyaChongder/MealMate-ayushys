@@ -2837,11 +2837,14 @@ tr.total-data td strong {
 
 table.order-details {
   border: 1px solid #efefef;
+  margin-top: -6rem;
+  margin-left: 12rem;
 }
 
 table.order-details thead tr th {
   background-color: #efefef;
-  padding: 18px;
+  padding: 35px;
+  margin-right: -15px;
   font-size: 15px;
   font-weight: 500;
 }
@@ -2852,7 +2855,7 @@ table.order-details tbody td {
 }
 
 .order-details-wrap > a {
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 .card.single-accordion {

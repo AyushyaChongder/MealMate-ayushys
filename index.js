@@ -62,6 +62,9 @@ app.get("/loginsuccess", function(req,res){
 app.get("/checkout", function(req,res){
     res.sendFile(path.join(__dirname + "/views/checkout.html"))
 });
+app.get("/ordersuccess", function(req,res){
+    res.sendFile(path.join(__dirname + "/views/ordersuccess.html"))
+});
 
 // app.get("/singlepg", function(req,res){
 //     res.sendFile(path.join(__dirname + "/views/single-product.html"))
@@ -149,12 +152,20 @@ app.get('/explore', (req, res) => {
 app.get('/singlepg',(req, res) => {
     const pg_name = req.query.pg_name;
     // console.log(pg_name);
-    const qry3="Select * from pg where pg_name=?";
+    const qry3="SELECT * FROM pg JOIN items ON items.pg_name = pg.pg_name WHERE pg.pg_name =?";
     mysql.query(qry3,[pg_name], (err, results) => {
         if (err) throw err;
-        res.render('singlepg', { pg_name: results[0].pg_name}) 
+        res.render('singlepg', { pg_name: results[0].pg_name,item_description: results[0].item_description,item_category: results[0].item_category}) 
     })
  });
+
+//  app.get('/checkout', (req, res) => {
+//     // const order_quantity = req.query.order_quantity;
+//     const pg_name = req.query.pg_name;
+//     console.log(pg_name);
+//     // console.log(order_quantity);
+//     let qry='insert into orders (order_id)values (?,?,?,?,)'
+//  });
 
 var id;
 // var email,password;
