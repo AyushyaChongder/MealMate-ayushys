@@ -63,9 +63,6 @@ app.get("/singlepg", function(req,res){
 // });
 
 
-// app.get("/userprofile", function(req,res){
-//     res.render("/views/userprofile.ejs")
-// });
 
 
 app.get("/usersignup", (req, res) => {
@@ -130,6 +127,8 @@ app.get("/loginperson", (req, res) => {
    
 })
 
+
+
 app.get('/userprofile/:id', (req, res) => {
 
          id = req.params.id;
@@ -173,7 +172,18 @@ app.get("/views", (req, res) => {
 
 app.get("/updateinfo",(req,res)=> {
     const email = req.query.email;
-    
+    // const password = req.query.password;
+    const password1 = req.query.password1;
+    const street = req.query.street;
+    const house=req.query.house;
+    const phone=req.query.phone;
+    const pincode=req.query.pincode;
+    let qry5='UPDATE user SET street = ?, house = ?, phone = ?, pincode=?, password=? WHERE email = ?'
+    mysql.query(qry5,[street,house,phone,pincode,password1,email],(error, results) => {
+        console.log(results);
+        res.sendFile(path.join(__dirname + "/views/updatesuccess.html"))
+        //  res.render("updateprofile",{name:results[0].name,street:results[0].street,pincode:results[0].pincode,email:results[0].email,phone:results[0].phone,house:results[0].house,password:results[0].password})
+        })
 });
 
 app.listen(port,(err)=>{
