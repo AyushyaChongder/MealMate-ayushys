@@ -34,6 +34,73 @@
         <link rel="stylesheet" href="/css/userprofile.css">
          
     </head>
+	<script >
+    function ValidateForm() {
+      
+	   var regnum = /^[0-9]+$/;
+	   var house = document.getElementById('house').value;
+	   
+   	   if (!regnum.test(house)) {
+		alert('Please enter a valid house number.');
+            document.getElementById('house').focus();
+            return false;
+        }
+
+		var regpin = /^[0-9]{6}$/;
+	    var pincode = document.getElementById('pincode').value;
+	   
+   	   if (!regpin.test(pincode)) {
+		alert('Please enter a valid pincode of 6 digits only.');
+            document.getElementById('pincode').focus();
+            return false;
+        }
+  
+       
+        var phoneno = /^\d{10}$/;
+        var phone = document.getElementById('phone').value;
+        if (!phoneno.test(phone)) {
+        alert('Please provide a valid phone number');
+        phone.focus;
+        return false;
+     }
+    
+     	var newPassword = document.getElementById('password1');
+        var minNumberofChars = 8;
+        var maxNumberofChars = 16;
+        var isNonWhiteSpace = /^\S*$/;
+        var isContainsUppercase = /^(?=.*[A-Z]).*$/;
+        var isContainsLowercase = /^(?=.*[a-z]).*$/;
+        var isContainsNumber = /^(?=.*[0-9]).*$/;
+        var isContainsSymbol = /^(?=.*[~`!@#$%^&*()--+={}\[\]|\\:;"'<>,.?/_₹]).*$/;
+        var isValidLength = /^.{8,16}$/;
+        
+        if (!isNonWhiteSpace.test(newPassword.value)) {
+        alert("Password must not contain Whitespaces.");
+        newPassword.focus;
+      }
+      if (!isContainsUppercase.test(newPassword.value)) {
+        alert("Password must have at least one Uppercase Character.");
+        newPassword.focus;
+      }
+      if (!isContainsLowercase.test(newPassword.value)) {
+        alert("Password must have at least one Lowercase Character.");
+        newPassword.focus;
+      }
+      if (!isContainsNumber.test(newPassword.value)) {
+        alert("Password must contain at least one Digit.");
+        newPassword.focus;
+      }
+      if (!isContainsSymbol.test(newPassword.value)) {
+        alert("Password must contain at least one Special Symbol.");
+        newPassword.focus;
+      }
+      if (!isValidLength.test(newPassword.value)) {
+        alert("Password must be 8-16 Characters Long.");
+        newPassword.focus;
+        return false;
+      }
+    }
+    </script>
 <body>
     <!--PreLoader-->
     <div class="loader">
@@ -73,12 +140,12 @@
 										<li><a href="shop.html">Shop</a></li> -->
 									<!-- </ul> -->
 								</li>
-								<li><a href="/orders">Orders</a>
+								<!-- <li><a href="/orders">Orders</a>
 									<ul class="sub-menu">
 										<li><a href="/history">Order History</a></li>
-										<!-- <li><a href="single-news.html">Single News</a></li> -->
+										<li><a href="single-news.html">Single News</a></li>
 									</ul>
-								</li>
+								</li> -->
 								<li><a href="/contact">Contact</a></li>
 								<!-- <li><a href="shop.html">Shop</a>
 									<ul class="sub-menu">
@@ -90,10 +157,10 @@
 								</li> -->
 								<li>
 									<div class="header-icons">
-										 <!-- <div class="hero-btns">
+										<div class="hero-btns">
 											<a href="/login" class="boxed-btn">Log in</a>
-											<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
-										</div> -->
+											<!-- <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a> -->
+										</div>
 										<!-- <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a> -->
 										
 									</div>

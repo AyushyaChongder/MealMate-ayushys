@@ -72,12 +72,12 @@
 										<li><a href="shop.html">Shop</a></li> -->
 									<!-- </ul> -->
 								</li>
-								<li><a href="/orders">Orders</a>
+								<!-- <li><a href="/orders">Orders</a>
 									<ul class="sub-menu">
 										<li><a href="/history">Order History</a></li>
-										<!-- <li><a href="single-news.html">Single News</a></li> -->
+										<li><a href="single-news.html">Single News</a></li>
 									</ul>
-								</li>
+								</li> -->
 								<li><a href="/contact">Contact</a></li>
 								<!-- <li><a href="shop.html">Shop</a>
 									<ul class="sub-menu">
@@ -91,7 +91,7 @@
 									<div class="header-icons">
 										<div class="hero-btns">
 											<a href="/login" class="boxed-btn">Log in</a>
-											<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+											<!-- <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a> -->
 										</div>
 										<!-- <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a> -->
 										
@@ -162,13 +162,16 @@
 							<li><p>Matar Paneer</p></li>
 							<li><p>Chapati</p></li>
 						</ul> --}}
+				        <h6>Meal Description</h6>
 						<p>{{item_description}}</p>
+						<br>
+						<h6>Meal Quantity</h6>
 						<div class="single-product-form">
-							<form action="index.html">
+							<form action="/checkout">
 								<input type="number" placeholder="0" min="0">
 							</form>
-							<a href="/checkout" class="cart-btn"><i class="fas fa-shopping-cart"></i> Book a Meal</a>
-							<p><strong>Categories: </strong>Veg meal</p>
+							<a href="/checkout?pg_name={{pg_name}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Book a Meal</a>
+							<p><strong>Category: </strong>{{item_category}}</p>
 						</div>
 						<h4>Share:</h4>
 						<ul class="product-share">

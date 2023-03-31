@@ -59,9 +59,9 @@
 						<!-- menu start -->
 						<nav class="main-menu">
 							<ul>
-								<li class="current-list-item"><a href="#">Home</a></li>
-								<li><a href="about.html">About</a></li>
-								<li><a href="shop.html">Explore</a>
+								<li ><a href="/">Home</a></li>
+								<li><a href="/about">About</a></li>
+								<li><a href="/explore">Explore</a>
 									<!-- <ul class="sub-menu">
 										<li><a href="404.html">PGs nearby</a></li>
 										<li><a href="about.html">Meals</a></li> -->
@@ -72,13 +72,13 @@
 										<li><a href="shop.html">Shop</a></li> -->
 									<!-- </ul> -->
 								</li>
-								<li><a href=".html">Orders</a>
+								<!-- <li><a href="/orders">Orders</a>
 									<ul class="sub-menu">
-										<li><a href="news.html">Order History</a></li>
-										<!-- <li><a href="single-news.html">Single News</a></li> -->
+										<li><a href="/history">Order History</a></li>
+										<li><a href="single-news.html">Single News</a></li>
 									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
+								</li> -->
+								<li><a href="/contact">Contact</a></li>
 								<!-- <li><a href="shop.html">Shop</a>
 									<ul class="sub-menu">
 										<li><a href="shop.html">Shop</a></li>
@@ -89,8 +89,12 @@
 								</li> -->
 								<li>
 									<div class="header-icons">
+										<div class="hero-btns">
+											<a href="/login" class="boxed-btn">Log in</a>
+											<!-- <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a> -->
+										</div>
 										<!-- <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a> -->
-										<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+										
 									</div>
 								</li>
 							</ul>
@@ -104,6 +108,7 @@
 		</div>
 	</div>
 	<!-- end header -->
+	
 	
 	<!-- search area -->
 	<div class="search-area">
@@ -211,22 +216,25 @@
 						<table class="order-details">
 							<thead>
 								<tr>
-									<th>Your order Details</th>
-									<th>Price</th>
+									<th>Order ID</th>
+									<th>PG Name</th>
+									<th>Order Item</th>
+									<th>Item Quantity</th>
+									<th>Delivery Charges</th>
+									<th>Total Amount</th>
+
 								</tr>
 							</thead>
 							<tbody class="order-details-body">
-								<tr>
-									<td>Product</td>
-									<td>Total</td>
-								</tr>
-								<tr>
-									<td>1 Veg Meal</td>
-									<td>Rs 0</td>
-								</tr>
+								<td>9000001</td>
+								<td>SLV Pg</td>
+								<td>Veg Meal</td>
+								<td>1</td>
+								<td>Rs 90</td>
+								<td>Rs 90</td>
 								
 							</tbody>
-							<tbody class="checkout-details">
+							<!-- <tbody class="checkout-details">
 								<tr>
 									<td>Subtotal</td>
 									<td>Rs 0</td>
@@ -239,9 +247,9 @@
 									<td>Total</td>
 									<td>Rs 90</td>
 								</tr>
-							</tbody>
+							</tbody> -->
 						</table>
-						<a href="#" class="boxed-btn">Place Order</a>
+						<a href="/ordersuccess" class="boxed-btn">Place Order</a>
 					</div>
 				</div>
 			</div>
