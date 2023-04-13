@@ -26,6 +26,7 @@ user_type varchar(10));
 
 select * from master;
 truncate table master;
+delete from master where id=1;
 
 delimiter //
 
@@ -56,16 +57,25 @@ truncate table orders;
 select * from orders;
 ALTER TABLE orders
 ADD order_date date;
+drop table orders;
 
 create table items(
 item_id int auto_increment primary key, 
 item_description varchar(255),
 item_category varchar(50),
 pg_id int,
+pg_name varchar(50),
 quantity_available int,
 FOREIGN KEY(pg_id) REFERENCES pg(pg_id));
 drop table items;
-
+ALTER TABLE items AUTO_INCREMENT=9000001;
+select * from items;
+drop table items;
+insert into items values(9000001,'Jeera Rice, Chapati, Sambhar, Palak Paneer','Veg Meal',7000001,'SLV Pg',10);
+insert into items values(9000002,'Jeera Rice, Chapati, Chicken Curry, Palak Paneer','Non-Veg Meal',7000002,'Serenity Hostels',10);
+insert into items values(9000003,'Normal Rice, Chapati, Soyabean Curry, Daal fry','Veg Meal',7000003,'Pelagia Palace',10);
+insert into items values(9000004,'Normal Rice, Chapati, Egg Curry, Daal fry','Non-Veg Meal',7000004,'Aira Pg',10);
+insert into items values(9000005,'Normal Rice, Chapati, Kadai Paneer, Daal fry','Veg Meal',7000005,'SriNivasa Pg',10);
 
 create table pg(
 pg_id int auto_increment primary key,
@@ -86,19 +96,24 @@ VALUES (NEW.pg_id, NEW.pg_name, NEW.pg_email, NEW.pg_password, 'PG');
 END //
 
 create table orders1(
-order_id int primary key,
+order_id int auto_increment key,
 user_id int,
 pg_id int,
+pg_name varchar(50),
 order_item varchar(50),
-order_quantity int,
-order_status varchar(50),
-order_cost float,
-item_id int,
- FOREIGN KEY(user_id) REFERENCES user(id),
- FOREIGN KEY(pg_id) REFERENCES pg(pg_id),
- FOREIGN KEY(item_id) REFERENCES items(item_id));
- 
+item_id int
+);
+ ALTER TABLE orders1 AUTO_INCREMENT=210000051;
  drop table orders1;
- 
+ select * from orders1;
+
+delete from orders1 where order_id=210000051;
+
  show tables;
- 
+ delimiter //
+CREATE TRIGGER afinsorders AFTER INSERT ON orders1
+FOR EACH ROW
+INSERT INTO master (id, name, email, password, user_type)
+VALUES (NEW.pg_id, NEW.pg_name, NEW.pg_email, NEW.pg_password, 'PG');
+END //
+

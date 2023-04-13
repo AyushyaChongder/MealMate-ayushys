@@ -89,11 +89,11 @@
 									</ul>
 								</li> -->
 								<li>
-									<div class="header-icons">
+									{{!-- <div class="header-icons">
 										<div class="hero-btns">
-											<a href="/login" class="boxed-btn">Log in</a>
+											<a href="/login" class="boxed-btn">Log in</a> --}}
 											<!-- <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a> -->
-										</div>
+										{{!-- </div> --}}
 										<!-- <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a> -->
 										
 									</div>
@@ -135,9 +135,9 @@
             <div class="col-lg-4 pb-5">
                 <!-- Account Sidebar-->
                 <div class="author-card pb-3">
-                    <div class="author-card-cover"><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-award text-md"></i>&nbsp;290 points</a></div>
+                    <div class="author-card-cover"><a class="btn btn-style-1 btn-white btn-sm" href="#" data-toggle="tooltip" title="" data-original-title="You currently have 290 Reward points to spend"><i class="fa fa-heart text-md"></i>&nbsp;290</a></div>
                     <div class="author-card-profile">
-                        <div class="author-card-avatar"><img src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                        <div class="author-card-avatar"><img src="/img/profile.png">
                         </div>
                         <div class="author-card-details">
                             <h5 class="author-card-name text-lg">{{name}}</h5><span class="author-card-position">{{email}}</span>
@@ -188,26 +188,34 @@
                     <table class="table table-hover mb-0">
                         <thead>
                             <tr>
-                                <th>Order #</th>
-                                <th>Item</th>
+                                <th>Order ID</th>
+								<th>User ID</th>
+								<th>Item ID</th>
+								<th>PG ID</th>
+								<th>PG Name</th>
+								<th>Order Item</th>
                                 <th>Date</th>
                                 <th>Status</th>
                                 <th>Total</th>
                             </tr>
                         </thead>
                         <tbody>
- 
+                        {{#if msg}}
                         {{#each data}}
                         <tr>
                             {{!-- <th scope="row">{{@index}}</th> --}}
                             <td>{{this.order_id}}</td>
+                            <td>{{this.user_id}}</td>
+                            <td>{{this.item_id}}</td>
+                            <td>{{this.pg_id}}</td>
+                            <td>{{this.pg_name}}</td>
                             <td>{{this.order_item}}</td>
                             <td>{{this.order_date}}</td>
                             <td>{{this.order_status}}</td>
-                            <td>Rs {{this.order_cost}}</td>
+                            <td>{{this.order_cost}}</td>
                         </tr>
                         {{/each}}
-                    
+                       {{/if}}
                         </tbody>
                     </table>
                         {{!-- {{else}}

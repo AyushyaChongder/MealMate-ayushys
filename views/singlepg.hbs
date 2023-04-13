@@ -149,7 +149,7 @@
 			<div class="row">
 				<div class="col-md-5">
 					<div class="single-product-img">
-						<img src="/img/pexels-shivam-_-5147364.jpg" alt="">
+						<img src="/img/pg.jpg" alt="">
 					</div>
 				</div>
 				<div class="col-md-7">
@@ -168,8 +168,8 @@
 						<h6>Meal Quantity</h6>
 						<div class="single-product-form">
 							<form action="/checkout" method="post">
-								<input type="number" placeholder="0" min="0" name="order_quantity">
-								<br><br><a href="/checkout?pg_name={{pg_name}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Book a Meal</a>
+								<input type="number" placeholder="0" min="0" max={{quantity_available}} name="order_quantity">
+								<br><br><a href="/checkout?item_id={{item_id}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Book a Meal</a>
 							</form>
 <br>
 							<p><strong>Category: </strong>{{item_category}}</p>

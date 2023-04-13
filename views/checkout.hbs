@@ -217,21 +217,23 @@
 							<thead>
 								<tr>
 									<th>Order ID</th>
+									<th>User ID</th>
+									<th>Item ID</th>
+									<th>PG ID</th>
 									<th>PG Name</th>
 									<th>Order Item</th>
-									<th>Item Quantity</th>
-									<th>Delivery Charges</th>
-									<th>Total Amount</th>
+									<!-- <th>Item Quantity</th>
+									<th>Item Description</th> -->
 
 								</tr>
 							</thead>
 							<tbody class="order-details-body">
-								<td>9000001</td>
-								<td>SLV Pg</td>
-								<td>Veg Meal</td>
-								<td>1</td>
-								<td>Rs 90</td>
-								<td>Rs 90</td>
+								<td>{{order_id}}</td>
+								<td>{{id}}</td>
+								<td>{{item_id}}</td>
+								<td>{{pg_id}}</td>
+								<td>{{pg_name}}</td>
+								<td>{{order_item}}</td>
 								
 							</tbody>
 							<!-- <tbody class="checkout-details">
@@ -249,7 +251,7 @@
 								</tr>
 							</tbody> -->
 						</table>
-						<br><br>
+						<br><br><br><br>
 						<a href="/ordersuccess" class="boxed-btn" style="padding: 15px;">Place Order</a><br><br>
 					</div>
 				</div>
