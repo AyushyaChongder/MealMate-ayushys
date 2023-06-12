@@ -46,24 +46,7 @@
             return false;
         }
 	  
-	   var regnum = /^[0-9]+$/;
-	   var house = document.getElementById('house').value;
-	   
-   	   if (!regnum.test(house)) {
-		alert('Please enter a valid house number.');
-            document.getElementById('house').focus();
-            return false;
-        }
-
-		var regpin = /^[0-9]{6}$/;
-	    var pincode = document.getElementById('pincode').value;
-	   
-   	   if (!regpin.test(pincode)) {
-		alert('Please enter a valid pincode of 6 digits only.');
-            document.getElementById('pincode').focus();
-            return false;
-        }
-  
+	  
        
         var phoneno = /^\d{10}$/;
         var phone = document.getElementById('phone').value;

@@ -13,9 +13,10 @@ phone bigint,
 password varchar(20));
 
 ALTER TABLE user AUTO_INCREMENT=1000001;
-
 select * from user;
- truncate table user;
+truncate table user;
+
+
 
 create table master(
 id int primary key,
@@ -26,7 +27,7 @@ user_type varchar(10));
 
 select * from master;
 truncate table master;
-delete from master where id=1;
+delete from master where id=3;
 
 delimiter //
 
@@ -41,23 +42,6 @@ FOR EACH ROW
 UPDATE master SET id=NEW.id, name=NEW.name, email=NEW.email, password=NEW.password;
 END //
 
-create table orders(
-order_id int primary key,
-user_id int,
-order_item varchar(50),
-order_quantity int,
-order_status varchar(50),
-order_cost float,
- FOREIGN KEY(user_id) REFERENCES user(id));
- 
-insert into orders values(210000057,1000001,'non-veg meal',1,'In Progress',90,'2023/03/22');
-insert into orders values(210000050,1000002,'veg meal',2,'Delivered',150,'2023/01/22');
-insert into orders values(210000052,1000001,'veg meal',1,'Delivered',75,'2023/01/15');
-truncate table orders;
-select * from orders;
-ALTER TABLE orders
-ADD order_date date;
-drop table orders;
 
 create table items(
 item_id int auto_increment primary key, 
@@ -65,17 +49,20 @@ item_description varchar(255),
 item_category varchar(50),
 pg_id int,
 pg_name varchar(50),
-quantity_available int,
-FOREIGN KEY(pg_id) REFERENCES pg(pg_id));
+quantity_available int);
 drop table items;
 ALTER TABLE items AUTO_INCREMENT=9000001;
 select * from items;
-drop table items;
-insert into items values(9000001,'Jeera Rice, Chapati, Sambhar, Palak Paneer','Veg Meal',7000001,'SLV Pg',10);
-insert into items values(9000002,'Jeera Rice, Chapati, Chicken Curry, Palak Paneer','Non-Veg Meal',7000002,'Serenity Hostels',10);
-insert into items values(9000003,'Normal Rice, Chapati, Soyabean Curry, Daal fry','Veg Meal',7000003,'Pelagia Palace',10);
-insert into items values(9000004,'Normal Rice, Chapati, Egg Curry, Daal fry','Non-Veg Meal',7000004,'Aira Pg',10);
-insert into items values(9000005,'Normal Rice, Chapati, Kadai Paneer, Daal fry','Veg Meal',7000005,'SriNivasa Pg',10);
+truncate table items;
+delete from items where item_id=9000002;
+
+insert into items values("9000001","Butter Chicken,Rice","Non-Veg meal","7000002","SLV Pg",10);
+insert into items values("9000002","Palak Paneer,Rice","Veg meal","7000002","SLV Pg",6);
+insert into items values("9000003","Chicken Biryani,Raita","Non-Veg meal","7000001","Serenity Hostels",12);
+insert into items values("9000004","Kadai Paneer,Jeera Rice","Veg meal","7000001","Serenity Hostels",4);
+insert into items values("9000006","Chilli Chicken,Fried Rice","Non-Veg meal","7000003","Pelagia Palace",7);
+insert into items values("9000005","Chilli Paneer,Fried Rice","Veg meal","7000003","Pelagaia Palace",9);
+
 
 create table pg(
 pg_id int auto_increment primary key,
@@ -88,6 +75,7 @@ ALTER TABLE pg AUTO_INCREMENT=7000001;
 truncate table pg;
 drop table pg;
 select * from pg;
+delete from pg where pg_id=7000001;
 delimiter //
 CREATE TRIGGER afinspg AFTER INSERT ON pg
 FOR EACH ROW
@@ -101,19 +89,60 @@ user_id int,
 pg_id int,
 pg_name varchar(50),
 order_item varchar(50),
-item_id int
-);
+item_id int,
+delivery_status varchar(50),
+order_quantity int);
  ALTER TABLE orders1 AUTO_INCREMENT=210000051;
  drop table orders1;
  select * from orders1;
 
-delete from orders1 where order_id=210000051;
+delete from orders1 where order_id=210000053;
 
  show tables;
- delimiter //
-CREATE TRIGGER afinsorders AFTER INSERT ON orders1
-FOR EACH ROW
-INSERT INTO master (id, name, email, password, user_type)
-VALUES (NEW.pg_id, NEW.pg_name, NEW.pg_email, NEW.pg_password, 'PG');
-END //
+ 
+ create table delivery_agents(
+agent_id int auto_increment primary key,
+agent_name varchar(255),
+agent_phoneno bigint, 
+availability_status varchar(255));
+ALTER TABLE delivery_agents AUTO_INCREMENT=410000051;
+truncate table delivery_agents;
 
+
+
+create table delivery(
+delivery_id int auto_increment primary key,
+user_id int,
+agent_id int,
+delivery_date date,
+delivery_time time,
+delivery_location varchar(255));
+ALTER TABLE delivery AUTO_INCREMENT=58000001;
+ drop table delivery;
+ truncate table delivery;
+ select * from delivery;
+
+insert into delivery_agents values(58000001, "Raj",8867904510,"Available");
+insert into delivery_agents values(58000002, "Rohit",9866701110,"Available");
+insert into delivery_agents values(58000003, "Sonu",6731881391,"Available");
+insert into delivery_agents values(58000004, "Mukesh",674513091,"Available");
+insert into delivery_agents values(58000005, "Rahul",6731981391,"Available");
+insert into delivery_agents values(58000006, "Shivam",6737810391,"Available");
+
+
+drop table delivery_agents;
+delete from delivery 
+create table reviews(
+review_id int auto_increment primary key,
+user_id int,
+user_name varchar(50) not null,
+pg_name varchar(50),
+review_descp varchar(255) not null,
+no_of_hearts int not null);
+
+
+select * from reviews;
+drop table reviews;
+
+
+drop table orders;

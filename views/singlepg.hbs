@@ -155,22 +155,25 @@
 				<div class="col-md-7">
 					<div class="single-product-content">
 						<h3>{{pg_name}}</h3>
-						{{!-- <p class="single-product-pricing">{{item_category}}</p> --}}
+						{{!-- <p l Description</h6>
+						<p>{{iteclass="single-product-pricing">{{item_category}}</p> --}}
 						{{!-- <ul>
 							<li><p>Jeera Rice</p></li>
 							<li><p>Sambhar Daal</p></li>
 							<li><p>Matar Paneer</p></li>
 							<li><p>Chapati</p></li>
 						</ul> --}}
-				        <h6>Meal Description</h6>
-						<p>{{item_description}}</p>
+						<h6>Meal Description</h6>
+				        <p>{{item_description}}</p>
 						<br>
 						<h6>Meal Quantity</h6>
 						<div class="single-product-form">
-							<form action="/checkout" method="post">
-								<input type="number" placeholder="0" min="0" max={{quantity_available}} name="order_quantity">
-								<br><br><a href="/checkout?item_id={{item_id}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Book a Meal</a>
-							</form>
+						<form action="/checkout" method="get">
+  <label class="form-label">Quantity</label>
+  <input type="number" name="order_quantity" class="form-control" min="0" max="1">
+  <br><br>
+  <a href="/checkout?item_id={{item_id}}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Book a Meal</a>
+</form>
 <br>
 							<p><strong>Category: </strong>{{item_category}}</p>
 						</div>
